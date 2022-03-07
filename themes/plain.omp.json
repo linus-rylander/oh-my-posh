@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "transparent",
+          "foreground": "p:white",
+          "foreground_templates": [
+            "{{ if eq .OS \"ubuntu\" }}p:ubuntu{{ end }}",
+            "{{ if eq .OS \"windows\" }}p:windows{{ end }}"
+          ],
+          "properties": {
+            "template": "{{ if .WSL }}wsl: {{ end }}{{.Icon}} ",
+            "ubuntu": "\uf31b ",
+            "windows": "\ue70f"
+          },
+          "style": "plain",
+          "type": "os"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:white",
+          "foreground_templates": [
+            "{{ if eq .Shell \"bash\" }}p:bash{{ end }}",
+            "{{ if eq .Shell \"cmd\" }}p:cmd{{ end }}",
+            "{{ if eq .Shell \"pwsh\" }}p:pwsh{{ end }}"
+          ],
+          "properties": {
+            "template": "{{ .Name }} "
+          },
+          "style": "plain",
+          "type": "shell"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:azure",
+          "properties": {
+            "template": "| \ufd03 {{ .Name }} "
+          },
+          "style": "plain",
+          "type": "az"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:git",
+          "properties": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "fetch_worktree_count": true,
+            "template": "| {{ .UpstreamIcon }} {{ .HEAD }} {{ if .Working.Changed }}\uf044 {{ .Working.String }} {{ end }}"
+          },
+          "style": "plain",
+          "type": "git"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:white",
+          "properties": {
+            "template": "| {{ .CurrentDate | date .Format }} ",
+            "time_format": "15:04"
+          },
+          "style": "plain",
+          "type": "time"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:white",
+          "foreground_templates": [
+            "{{ if eq .Shell \"bash\" }}p:bash{{ end }}",
+            "{{ if eq .Shell \"cmd\" }}p:cmd{{ end }}",
+            "{{ if eq .Shell \"pwsh\" }}p:pwsh{{ end }}"
+          ],
+          "properties": {
+            "max_depth": 2,
+            "style": "agnoster_short",
+            "template": "| {{ .Path }}"
+          },
+          "style": "plain",
+          "type": "path"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "transparent",
+          "foreground": "p:white",
+          "properties": {
+            "always_enabled": true,
+            "style": "round",
+            "template": "{{ .FormattedMs }} |"
+          },
+          "style": "plain",
+          "type": "executiontime"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:white",
+          "foreground_templates": [
+            "{{ if .Error }}p:red{{ end }}",
+            "{{ if eq \"Charging\" .State.String }}p:light-green{{ end }}",
+            "{{ if eq \"Discharging\" .State.String }}{{ if le .Percentage 10 }}p:red{{ else }}{{ if le .Percentage 20 }}p:orange{{ end }}{{ end }}{{ end }}",
+            "{{ if eq \"Full\" .State.String }}p:green{{ end }}"
+          ],
+          "properties": {            
+            "charged_icon": "\uf578 ",
+            "charging_icon": "\uf583 ",
+            "discharging_icon": "\uf57d ",
+            "display_error": true,
+            "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}\uf8ef{{ else }}\uf590{{ end }}"
+          },
+          "style": "plain",
+          "type": "battery"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "transparent",
+          "foreground": "default",
+          "properties": {
+            "template": "{{ if gt .Code 0 }}<p:red>error</> {{ end }}{{ if eq .Root true }}<p:yellow>\uf0e7</>{{ else }}{{ if eq .OS \"windows\" }}\u276f{{ else }}${{ end }}{{ end }}"
+          },
+          "style": "plain",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "palette": {
+    "azure": "#0083CC",
+    "bash": "#AEA79F",
+    "cmd": "#19B7A4",
+    "git": "p:yellow",
+    "green": "#20aa0e",
+    "light-green": "#67c75a",
+    "orange": "#f77f00",
+    "pwsh": "#7FD5EA",
+    "red": "#dc2f02",
+    "ubuntu": "#E95420",
+    "white": "#DDDDDD",
+    "windows": "#0079D8",
+    "yellow": "#FBBA18"
+  },
+  "version": 1
+}
