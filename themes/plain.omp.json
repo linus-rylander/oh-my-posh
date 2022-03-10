@@ -37,7 +37,7 @@
           "background": "transparent",
           "foreground": "p:azure",
           "properties": {
-            "template": "| \ufd03 {{ .Name }} "
+            "template": "| \ufd03 {{ .Name }} from {{ .Origin }} "
           },
           "style": "plain",
           "type": "az"
