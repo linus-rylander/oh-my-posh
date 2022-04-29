@@ -11,12 +11,12 @@
             "{{ if eq .OS \"ubuntu\" }}p:ubuntu{{ end }}",
             "{{ if eq .OS \"windows\" }}p:windows{{ end }}"
           ],
-          "properties": {
-            "template": "{{ if .WSL }}wsl: {{ end }}{{.Icon}} ",
+          "properties": {            
             "ubuntu": "\uf31b ",
             "windows": "\ue70f"
           },
           "style": "plain",
+          "template": "{{ if .WSL }}wsl: {{ end }}{{.Icon}} ",
           "type": "os"
         },
         {
@@ -27,19 +27,15 @@
             "{{ if eq .Shell \"cmd\" }}p:cmd{{ end }}",
             "{{ if eq .Shell \"pwsh\" }}p:pwsh{{ end }}"
           ],
-          "properties": {
-            "template": "{{ .Name }} "
-          },
           "style": "plain",
+          "template": "{{ .Name }} ",
           "type": "shell"
         },
         {
           "background": "transparent",
           "foreground": "p:azure",
-          "properties": {
-            "template": "| \ufd03 {{ .Name }} from {{ .Origin }} "
-          },
           "style": "plain",
+          "template": "| \ufd03 {{ .Name }} from {{ .Origin }} ",
           "type": "az"
         },
         {
@@ -48,20 +44,20 @@
           "properties": {
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "fetch_worktree_count": true,
-            "template": "| {{ .UpstreamIcon }} {{ .HEAD }} {{ if .Working.Changed }}\uf044 {{ .Working.String }} {{ end }}"
+            "fetch_worktree_count": true
           },
           "style": "plain",
+          "template": "| {{ .UpstreamIcon }} {{ .HEAD }} {{ if .Working.Changed }}\uf044 {{ .Working.String }} {{ end }}",
           "type": "git"
         },
         {
           "background": "transparent",
           "foreground": "p:white",
           "properties": {
-            "template": "| {{ .CurrentDate | date .Format }} ",
             "time_format": "15:04"
           },
           "style": "plain",
+          "template": "| {{ .CurrentDate | date .Format }} ",
           "type": "time"
         },
         {
@@ -74,10 +70,10 @@
           ],
           "properties": {
             "max_depth": 2,
-            "style": "agnoster_short",
-            "template": "| {{ .Path }}"
+            "style": "agnoster_short"
           },
           "style": "plain",
+          "template": "| {{ .Path }}",
           "type": "path"
         }
       ],
@@ -91,10 +87,10 @@
           "foreground": "p:white",
           "properties": {
             "always_enabled": true,
-            "style": "round",
-            "template": "{{ .FormattedMs }} |"
+            "style": "round"
           },
           "style": "plain",
+          "template": "{{ .FormattedMs }} |",
           "type": "executiontime"
         },
         {
@@ -110,10 +106,10 @@
             "charged_icon": "\uf578 ",
             "charging_icon": "\uf583 ",
             "discharging_icon": "\uf57d ",
-            "display_error": true,
-            "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}\uf8ef{{ else }}\uf590{{ end }}"
+            "display_error": true
           },
           "style": "plain",
+          "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}\uf8ef{{ else }}\uf590{{ end }}",
           "type": "battery"
         }
       ],
@@ -126,10 +122,8 @@
         {
           "background": "transparent",
           "foreground": "default",
-          "properties": {
-            "template": "{{ if gt .Code 0 }}<p:red>error</> {{ end }}{{ if eq .Root true }}<p:yellow>\uf0e7</>{{ else }}{{ if eq .OS \"windows\" }}\u276f{{ else }}${{ end }}{{ end }}"
-          },
           "style": "plain",
+          "template": "{{ if gt .Code 0 }}<p:red>error</> {{ end }}{{ if eq .Root true }}<p:yellow>\uf0e7</>{{ else }}{{ if eq .OS \"windows\" }}\u276f{{ else }}${{ end }}{{ end }}",
           "type": "text"
         }
       ],
@@ -152,5 +146,5 @@
     "windows": "#0079D8",
     "yellow": "#FBBA18"
   },
-  "version": 1
+  "version": 2
 }
